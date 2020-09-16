@@ -1,5 +1,5 @@
 from flask import render_template,request,redirect,url_for
-from app import app
+from . import main
 from request import get_news, get_news_feed,search_news
 from models import review
 from forms import ReviewForm
@@ -7,7 +7,7 @@ Review = review.Review
 
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
     
     '''
@@ -28,7 +28,7 @@ def index():
         return render_template('index.html', title = title, latest_news = latest, news_bulleting = bulletings, news_at_moment = now_playing)
 
 
-@app.route('/news/<news_id>')
+@main.route('/news/<news_id>')
 def news(news_id):
 
     '''
@@ -42,7 +42,7 @@ def news(news_id):
     return render_template('news.html', description = description, news = news, reviews = reviews)
 
 
-@app.route('/search/<news_name>')
+@main.route('/search/<news_name>')
 def search(news_name):
     """
     View function to display the search results
@@ -54,7 +54,7 @@ def search(news_name):
     return render_template('search.html',news = searched_news)
 
 
-@app.route('/news/review/new/<int:id>',methods = ['GET', 'POST'])
+@main.route('/news/review/news_feed_review/<int:id>',methods = ['GET', 'POST'])
 def news_feed_review(id):
     form = ReviewForm()
     news = get_news(id)
