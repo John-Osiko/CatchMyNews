@@ -1,9 +1,10 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from request import get_news, get_news_feed,search_news
-from models import review
-from forms import ReviewForm
-Review = review.Review
+from ..requests import get_news,get_news_feed,search_news
+from ..models import Review
+from .forms import ReviewForm
+
+# Review = review.Review
 
 
 # Views
@@ -14,18 +15,20 @@ def index():
     View root page function that returns the index page and its data
     '''
 
-     # Getting popular movie
-    latest_news = get_news('latest')
-    news_bulleting = get_news('bulletings')
-    news_at_moment = get_news('now_playing')
+     # Getting popular news
+    latest_news = get_news()
+    # news_bulleting = get_news('bulletings')
+    # news_at_moment = get_news('now_playing')
     title = 'Home - Welcome! This is your no.1 news feed Website Online'
-    search_news = request.args.get('news_query')
+    # search_news = request.args.get('news_query')
+    
+    return render_template('index.html', title = title, latest_news = latest_news)
 
-    if search_news:
-        return redirect(url_for('search',news_name=search_news))
+    # if search_news:
+    #     return redirect(url_for('main.search',news_name=search_news))
 
-    else:
-        return render_template('index.html', title = title, latest_news = latest, news_bulleting = bulletings, news_at_moment = now_playing)
+    # else:
+    #     return render_template('index.html', title = title, latest_news = latest, news_bulleting = bulletings, news_at_moment = now_playing)
 
 
 @main.route('/news/<news_id>')
@@ -64,6 +67,6 @@ def news_feed_review(id):
         review = form.review.data
         news_feed_review = Review(news.id,description,news.urlToImage,review)
         news_feed_review.save_review()
-        return redirect(url_for('news',id = news.id))
+        return redirect(url_for('main.news',id = news.id))
     title = f'{ news.description} review'
     return render_template('news_feed_review.html',description = description, review_form = form, news = news)

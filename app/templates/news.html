@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 <!-- Content block -->
 {% block content %}
 <div class="container">
@@ -13,10 +14,25 @@
             <p class="description"> {{ news.description }}</p>
             <p class="source">{{ news.source }}</p>
             <p class="habari"> <b> {{ news.author }}</b> - <i>{{ news.publishedAt }}</i> </p>
+            <a class="habari" href="/news/review/news_feed_review/{{news.id}}"> Write a new review</a>
 
 
         </div>
     </div>
+    <div class="row">
 
+        <h1>Reviews</h1>
+        <hr>
+
+        {% if reviews %}
+            {{macro.displayReviews(reviews)}}
+
+        {% else%}
+            <h3 class="text-center">This news has no reviews </h3>
+
+            <a class="btn btn-success btn-lg text-center" href="/news/review/news_feed_review/{{movie.id}}"> Write a new review</a>
+        {% endif %}
+
+    </div>
 </div>
 {% endblock content %}
