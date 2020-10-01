@@ -6,7 +6,7 @@ This is my week two project in the Python module.
 ## Description
 It is an application built by python to enable a user to catch the news feed he or she lost during the channel's speculated time.
 
-##BDD
+## BDD
 * User can watch news that happened a while ago.
 * User can view a summary of what news were present or those that will be presented.
 * User can also watch news that are being aired at the present moment.
