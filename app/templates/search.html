@@ -2,9 +2,9 @@
 {% import 'macros.html' as macro%}
 
 {% block content %}
-    <div class="container"}
+    <div class="container container-fluid">
         <div class="row">
-            <h3> Found{{ news|count }} matches</h3>
+            <h3> Found{{ articles|count }} matches</h3>
             <hr>
             <ul>
                 {{ macro.displayNewsList(news)}}
