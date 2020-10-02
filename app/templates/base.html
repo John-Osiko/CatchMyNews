@@ -23,13 +23,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <!-- Custom CSS-->
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    
     {% endblock %}
 </head>
 
 
-<body style="background-image: url('https://cdn.pixabay.com/photo/2014/08/27/07/53/blog-428950_960_720.jpg')" class="body" >
+
         {% block navbar %}
 
         {% include "navbar.html" %}
@@ -39,7 +38,47 @@
         {% block content %}
         {% endblock %}
 
-
+<footer class="footer">
+    <div class=" bg-dark pl-3 w-100">
+        <div class="container">
+            <div class="row  bg-grey w-100">
+                <div class="mx-auto text-center col-xs-12">
+                    <ul class="nav nav-inline justify-content-center p-3 d-flex">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/"><b>GET NEWS from</b></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" bg-dark pl-3 w-100">
+        <div class="container">
+            <div class="row  bg-grey w-100">
+                <div class="mx-auto col-xs-12">
+                    <ul class="nav nav-inline ">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="https://www.abc.net.au/">ABC NEWS |</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="https://www.aftenposten.no/">AFTENPOSTEN |</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="https://www.aljazeera.com/">ALJAZEERA |</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="text-center bg-dark">
+        <ul class="navbar-nav justify-content-center p-3 d-flex">
+            <a class="text-white" href="/">Privacy policy</a>
+            <a class="text-white" href="/">Terms &amp; Conditions</a>
+            <a class="nav-item text-white-50"> © 2020 CatchMyNews PLC </a>
+        </ul>
+    </nav>
+</footer>
 {% block scripts %}
 
 
